@@ -84,7 +84,7 @@ Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-77-generic x86_64)
 root@Meow:~#
 ```
 ---
-# Flag
+## Flag
 Una vez dentro, localizo la flag:
 
 ```bash
