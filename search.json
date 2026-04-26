@@ -2,9 +2,9 @@
 layout: null
 ---
 [
-    {% for post in site.posts %
+    {%- for post in site.posts -%
     }
-  {
+{
         "title": {
             { post.title | jsonify
             }
@@ -26,15 +26,15 @@ layout: null
     },
     {% endunless %
     }
-  {% endfor %
+{%- endfor -%
     }
-  {% if site.posts.size > 0 and site.writeups.size > 0 %
+{%- if site.posts.size > 0 and site.writeups.size > 0 -%
     },
-    {% endif %
+    {%- endif -%
     }
-  {% for writeup in site.writeups %
+{%- for writeup in site.writeups -%
     }
-  {
+{
         "title": {
             { writeup.title | jsonify
             }
@@ -56,6 +56,6 @@ layout: null
     },
     {% endunless %
     }
-  {% endfor %
+{%- endfor -%
     }
 ]
