@@ -12,6 +12,7 @@ title: Writeups
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">Todos</button>
     <div class="filter-separator"></div>
+    <button class="filter-btn f-very-easy" data-filter="very-easy">Very Easy</button>
     <button class="filter-btn f-easy" data-filter="easy">Easy</button>
     <button class="filter-btn f-med"  data-filter="medium">Medium</button>
     <button class="filter-btn f-hard" data-filter="hard">Hard</button>

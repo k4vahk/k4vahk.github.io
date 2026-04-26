@@ -488,6 +488,11 @@ h1 em {
     white-space: nowrap;
 }
 
+.diff-very-easy {
+    background: #0a1f0a;
+    color: #86efac;
+}
+
 .diff-easy {
     background: #0d2b14;
     color: #4ade80;
@@ -532,6 +537,12 @@ h1 em {
     background: var(--surface2);
     color: var(--text);
     border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-btn.f-very-easy.active {
+    background: #0a1f0a;
+    color: #86efac;
+    border-color: #144a14;
 }
 
 .filter-btn.f-easy.active {
