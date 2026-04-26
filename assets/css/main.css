@@ -575,10 +575,10 @@ h1 em {
     border-color: #2d1547;
 }
 
-.filter-btn.f-ctf.active {
-    background: #2b2005;
-    color: #facc15;
-    border-color: #4a3808;
+.filter-btn.f-docker.active {
+    background: #0d1f2b;
+    color: #38bdf8;
+    border-color: #0e3a57;
 }
 
 .filter-separator {
