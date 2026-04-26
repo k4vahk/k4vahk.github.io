@@ -3,7 +3,7 @@ layout: post
 title: HTB — Meow (Telnet)
 date: 2026-04-26
 platform: HackTheBox
-difficulty: Very Easy
+difficulty: very-easy
 description: Telnet
 tags:
   - Telnet
