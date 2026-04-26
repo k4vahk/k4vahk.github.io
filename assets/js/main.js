@@ -13,7 +13,7 @@ if (filterBtns.length > 0) {
                 activeFilters = { diff: 'all', platform: 'all' };
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-            } else if (['easy', 'medium', 'hard'].includes(f)) {
+            } else if (['very-easy', 'easy', 'medium', 'hard'].includes(f)) {
                 activeFilters.diff = (activeFilters.diff === f) ? 'all' : f;
             } else {
                 activeFilters.platform = (activeFilters.platform === f) ? 'all' : f;
