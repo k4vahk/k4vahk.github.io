@@ -32,7 +32,7 @@ title: Writeups
         <div class="writeup-subtitle">{{ writeup.description }}</div>
       </div>
       <span class="writeup-meta">{{ writeup.platform }}</span>
-      <span class="difficulty diff-{{ writeup.difficulty }}">{{ writeup.difficulty | capitalize }}</span>
+      <span class="difficulty diff-{{ writeup.difficulty }}">{{ writeup.difficulty | replace: '-', ' ' | capitalize }}</span>
     </a>
     {% endfor %}
   </div>
