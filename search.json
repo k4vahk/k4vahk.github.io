@@ -1,0 +1,61 @@
+---
+layout: null
+---
+[
+    {% for post in site.posts %
+    }
+  {
+        "title": {
+            { post.title | jsonify
+            }
+        },
+        "desc": {
+            { post.excerpt | strip_html | truncate: 100 | jsonify
+            }
+        },
+        "url": {
+            { post.url | jsonify
+            }
+        },
+        "section": "Blog",
+        "tags": {
+            { post.tags | join: ', ' | jsonify
+            }
+        }
+    }{% unless forloop.last %
+    },
+    {% endunless %
+    }
+  {% endfor %
+    }
+  {% if site.posts.size > 0 and site.writeups.size > 0 %
+    },
+    {% endif %
+    }
+  {% for writeup in site.writeups %
+    }
+  {
+        "title": {
+            { writeup.title | jsonify
+            }
+        },
+        "desc": {
+            { writeup.description | jsonify
+            }
+        },
+        "url": {
+            { writeup.url | jsonify
+            }
+        },
+        "section": "Writeup",
+        "tags": {
+            { writeup.tags | join: ', ' | jsonify
+            }
+        }
+    }{% unless forloop.last %
+    },
+    {% endunless %
+    }
+  {% endfor %
+    }
+]

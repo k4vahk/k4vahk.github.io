@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="page">
+    <div class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+            <span>{{ page.date | date: "%d %b %Y" }}</span>
+            {% if page.platform %}
+            <span class="sep"></span>
+            <span>{{ page.platform }}</span>
+            {% endif %}
+            {% if page.difficulty %}
+            <span class="sep"></span>
+            <span class="difficulty diff-{{ page.difficulty }}">{{ page.difficulty | capitalize }}</span>
+            {% endif %}
+            {% if page.tags %}
+            <span class="sep"></span>
+            {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+</div>

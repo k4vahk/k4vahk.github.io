@@ -1,0 +1,16 @@
+<nav>
+    <span class="nav-logo" onclick="window.location='/'">k4vahk<span>.sec</span></span>
+    <ul class="nav-links">
+        <li><a href="/" class="{% if page.url == '/' %}active{% endif %}">Inicio</a></li>
+        <li><a href="/portfolio/" class="{% if page.url contains 'portfolio' %}active{% endif %}">Portafolio</a></li>
+        <li><a href="/writeups/" class="{% if page.url contains 'writeups' %}active{% endif %}">Writeups</a></li>
+        <li><a href="/blog/" class="{% if page.url contains 'blog' %}active{% endif %}">Blog</a></li>
+        <li><a href="/glosario/" class="{% if page.url contains 'glosario' %}active{% endif %}">Glosario</a></li>
+        <li><a href="/sobre-mi/" class="{% if page.url contains 'sobre-mi' %}active{% endif %}">Sobre mí</a></li>
+    </ul>
+    <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="global-search" placeholder="Buscar..." autocomplete="off" spellcheck="false">
+        <div id="search-dropdown"></div>
+    </div>
+</nav>
