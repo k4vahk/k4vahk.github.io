@@ -99,3 +99,69 @@ if (searchInput) {
 document.addEventListener('click', e => {
     if (searchInput && !e.target.closest('.search-wrap')) closeSearch();
 });
+
+// ── Hover Preview (WikiLinks) ──
+const tooltip = document.createElement('div');
+tooltip.id = 'wiki-tooltip';
+tooltip.style.cssText = `
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  max-width: 320px;
+  background: #161614;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-size: 13px;
+  color: #888880;
+  line-height: 1.6;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  pointer-events: none;
+`;
+document.body.appendChild(tooltip);
+
+let tooltipTimeout;
+
+document.querySelectorAll('a.wiki-link').forEach(link => {
+    link.addEventListener('mouseenter', async (e) => {
+        clearTimeout(tooltipTimeout);
+        const url = link.getAttribute('href');
+        if (!url) return;
+
+        try {
+            const res = await fetch(url);
+            const html = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const title = doc.querySelector('.post-title')?.textContent?.trim() || link.textContent;
+            const content = doc.querySelector('.post-content p')?.textContent?.trim() || 'Sin descripción.';
+
+            tooltip.innerHTML = `
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:#55554f;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Vista previa</div>
+        <div style="font-size:14px;font-weight:500;color:#e8e6e0;margin-bottom:6px;">${title}</div>
+        <div>${content.slice(0, 180)}${content.length > 180 ? '...' : ''}</div>
+      `;
+
+            const x = e.clientX + 16;
+            const y = e.clientY + 16;
+            tooltip.style.left = (x + 320 > window.innerWidth ? x - 340 : x) + 'px';
+            tooltip.style.top = (y + 150 > window.innerHeight ? y - 160 : y) + 'px';
+            tooltip.style.display = 'block';
+        } catch (err) {
+            console.error('Tooltip error:', err);
+        }
+    });
+
+    link.addEventListener('mousemove', (e) => {
+        const x = e.clientX + 16;
+        const y = e.clientY + 16;
+        tooltip.style.left = (x + 320 > window.innerWidth ? x - 340 : x) + 'px';
+        tooltip.style.top = (y + 150 > window.innerHeight ? y - 160 : y) + 'px';
+    });
+
+    link.addEventListener('mouseleave', () => {
+        tooltipTimeout = setTimeout(() => {
+            tooltip.style.display = 'none';
+        }, 150);
+    });
+});

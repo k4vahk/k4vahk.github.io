@@ -1,16 +1,95 @@
+---
+layout: null
+---
 [
-    {
-        "title": "Mi primer mes en TryHackMe",
-        "desc": "Reflexiones honestas sobre los retos y el camino de alguien que empieza",
-        "url": "/blog/2025/04/25/primer-mes-tryhackme/",
+    {% for post in site.posts %
+    }
+  {
+        "title": {
+            { post.title | jsonify
+            }
+        },
+        "desc": {
+            { post.excerpt | strip_html | truncate: 120 | jsonify
+            }
+        },
+        "url": {
+            { post.url | jsonify
+            }
+        },
         "section": "Blog",
-        "tags": "aprendizaje, ctf"
+        "tags": {
+            { post.tags | join: ', ' | jsonify
+            }
+        }
+    }{% unless forloop.last %
     },
-    {
-        "title": "HTB — Blue (EternalBlue)",
-        "desc": "MS17-010 · Metasploit · Mimikatz",
-        "url": "/writeups/htb-blue/",
+    {% endunless %
+    }
+  {% endfor %
+    }
+
+  {% if site.posts.size > 0 %
+    },
+    {% endif %
+    }
+
+  {% for writeup in site.writeups %
+    }
+  {
+        "title": {
+            { writeup.title | jsonify
+            }
+        },
+        "desc": {
+            { writeup.description | jsonify
+            }
+        },
+        "url": {
+            { writeup.url | jsonify
+            }
+        },
         "section": "Writeup",
-        "tags": "windows, smb"
+        "tags": {
+            { writeup.tags | join: ', ' | jsonify
+            }
+        }
+    }{% unless forloop.last %
+    },
+    {% endunless %
+    }
+  {% endfor %
+    }
+
+  {% if site.writeups.size > 0 %
+    },
+    {% endif %
+    }
+
+  {% for note in site.notes %
+    }
+  {
+        "title": {
+            { note.title | jsonify
+            }
+        },
+        "desc": {
+            { note.content | strip_html | truncate: 120 | jsonify
+            }
+        },
+        "url": {
+            { note.url | jsonify
+            }
+        },
+        "section": "Nota",
+        "tags": {
+            { note.tags | join: ', ' | jsonify
+            }
+        }
+    }{% unless forloop.last %
+    },
+    {% endunless %
+    }
+  {% endfor %
     }
 ]
