@@ -35,6 +35,53 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Generate search index
+        run: |
+          ruby -e "
+          require 'json'
+          require 'yaml'
+
+          items = []
+
+          Dir.glob('_posts/*.md').each do |f|
+            content = File.read(f)
+            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            items << {
+              title: fm['title'].to_s,
+              desc: content.gsub(/---.*?---/m, '').gsub(/[#*\[\]`]/, '').strip[0..120],
+              url: '/blog/' + File.basename(f, '.md').gsub(/^\d{4}-\d{2}-\d{2}-/, '').gsub('-', '/') + '/',
+              section: 'Blog',
+              tags: Array(fm['tags']).join(', ')
+            }
+          end
+
+          Dir.glob('_writeups/*.md').each do |f|
+            content = File.read(f)
+            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            items << {
+              title: fm['title'].to_s,
+              desc: fm['description'].to_s,
+              url: '/writeups/' + File.basename(f, '.md') + '/',
+              section: 'Writeup',
+              tags: Array(fm['tags']).join(', ')
+            }
+          end
+
+          Dir.glob('_notes/*.md').each do |f|
+            content = File.read(f)
+            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            items << {
+              title: fm['title'].to_s,
+              desc: content.gsub(/---.*?---/m, '').gsub(/[#*\[\]`]/, '').strip[0..120],
+              url: '/notes/' + File.basename(f, '.md') + '/',
+              section: 'Nota',
+              tags: Array(fm['tags']).join(', ')
+            }
+          end
+
+          File.write('_site/search.json', JSON.generate(items))
+          "
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
