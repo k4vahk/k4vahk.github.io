@@ -39,47 +39,62 @@ jobs:
         run: |
           ruby -e "
           require 'json'
-          require 'yaml'
 
           items = []
 
           Dir.glob('_posts/*.md').each do |f|
             content = File.read(f)
-            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            parts = content.split('---')
+            next if parts.length < 3
+            fm = {}
+            parts[1].scan(/^(\w+):\s*(.+)$/) { |k,v| fm[k] = v.strip.gsub(/^[\"']|[\"']$/, '') }
+            body = parts[2..-1].join('---').gsub(/[#*\`\[\]]/, '').strip
+            date = File.basename(f)[0..9].gsub('-', '/')
+            slug = File.basename(f, '.md')[11..-1]
             items << {
               title: fm['title'].to_s,
-              desc: content.gsub(/---.*?---/m, '').gsub(/[#*\[\]`]/, '').strip[0..120],
-              url: '/blog/' + File.basename(f, '.md').gsub(/^\d{4}-\d{2}-\d{2}-/, '').gsub('-', '/') + '/',
+              desc: body[0..120],
+              url: \"/blog/#{date}/#{slug}/\",
               section: 'Blog',
-              tags: Array(fm['tags']).join(', ')
+              tags: fm['tags'].to_s
             }
           end
 
           Dir.glob('_writeups/*.md').each do |f|
             content = File.read(f)
-            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            parts = content.split('---')
+            next if parts.length < 3
+            fm = {}
+            parts[1].scan(/^(\w+):\s*(.+)$/) { |k,v| fm[k] = v.strip.gsub(/^[\"']|[\"']$/, '') }
+            slug = File.basename(f, '.md')
             items << {
               title: fm['title'].to_s,
               desc: fm['description'].to_s,
-              url: '/writeups/' + File.basename(f, '.md') + '/',
+              url: \"/writeups/#{slug}/\",
               section: 'Writeup',
-              tags: Array(fm['tags']).join(', ')
+              tags: fm['tags'].to_s
             }
           end
 
           Dir.glob('_notes/*.md').each do |f|
             content = File.read(f)
-            fm = YAML.safe_load(content.split('---')[1]) rescue {}
+            parts = content.split('---')
+            next if parts.length < 3
+            fm = {}
+            parts[1].scan(/^(\w+):\s*(.+)$/) { |k,v| fm[k] = v.strip.gsub(/^[\"']|[\"']$/, '') }
+            body = parts[2..-1].join('---').gsub(/[#*\`\[\]]/, '').strip
+            slug = File.basename(f, '.md')
             items << {
               title: fm['title'].to_s,
-              desc: content.gsub(/---.*?---/m, '').gsub(/[#*\[\]`]/, '').strip[0..120],
-              url: '/notes/' + File.basename(f, '.md') + '/',
+              desc: body[0..120],
+              url: \"/notes/#{slug}/\",
               section: 'Nota',
-              tags: Array(fm['tags']).join(', ')
+              tags: fm['tags'].to_s
             }
           end
 
           File.write('_site/search.json', JSON.generate(items))
+          puts 'Generated ' + items.length.to_s + ' items'
           "
 
       - name: Upload artifact
