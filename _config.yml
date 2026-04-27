@@ -8,6 +8,9 @@ theme: null
 
 # Colecciones personalizadas
 collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
   writeups:
     output: true
     permalink: /writeups/:name/
