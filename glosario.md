@@ -65,5 +65,11 @@ title: Glosario
       <div class="glosario-def">Telnet es un protocolo de red antiguo utilizado para acceder y gestionar ordenadores remotos mediante una interfaz de texto, operando generalmente en el puerto 23. Aunque permite la administración remota, no cifra la información, por lo que ha sido reemplazado por SSH por seguridad.</div>
     </div>
 
+    <div class="glosario-item">
+      <div class="glosario-cat">Servicio</div>
+      <div class="glosario-term">FTP</div>
+      <div class="glosario-def">El Protocolo de Transferencia de Archivos (FTP, por sus siglas en inglés) es un protocolo de red estándar utilizado para el intercambio de archivos entre un cliente y un servidor en una red TCP, como Internet.</div>
+    </div>
+
   </div>
 </div>
