@@ -23,7 +23,7 @@ if (filterBtns.length > 0) {
                 const bf = b.dataset.filter;
                 if (bf === 'all') {
                     b.classList.toggle('active', activeFilters.diff === 'all' && activeFilters.platform === 'all');
-                } else if (['easy', 'medium', 'hard'].includes(bf)) {
+                } else if (['very-easy', 'easy', 'medium', 'hard'].includes(bf)) {
                     b.classList.toggle('active', activeFilters.diff === bf);
                 } else {
                     b.classList.toggle('active', activeFilters.platform === bf);
