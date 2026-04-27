@@ -27,3 +27,9 @@ permalink: /blog/:year/:month/:day/:title/
 plugins:
   - jekyll-feed
   - jekyll-wikilinks
+
+wikilinks:
+  collections:
+    - notes
+    - writeups
+    - portfolio
