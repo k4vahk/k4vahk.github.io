@@ -13,7 +13,7 @@ if (filterBtns.length > 0) {
                 activeFilters = { diff: 'all', platform: 'all' };
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-            } else if (['very-easy', 'easy', 'medium', 'hard'].includes(f)) {
+            } else if (['very-easy', 'easy', 'medium', 'hard', 'insane'].includes(f)) {
                 activeFilters.diff = (activeFilters.diff === f) ? 'all' : f;
             } else {
                 activeFilters.platform = (activeFilters.platform === f) ? 'all' : f;
@@ -23,7 +23,7 @@ if (filterBtns.length > 0) {
                 const bf = b.dataset.filter;
                 if (bf === 'all') {
                     b.classList.toggle('active', activeFilters.diff === 'all' && activeFilters.platform === 'all');
-                } else if (['very-easy', 'easy', 'medium', 'hard'].includes(bf)) {
+                } else if (['very-easy', 'easy', 'medium', 'hard', 'insane'].includes(bf)) {
                     b.classList.toggle('active', activeFilters.diff === bf);
                 } else {
                     b.classList.toggle('active', activeFilters.platform === bf);

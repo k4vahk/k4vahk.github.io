@@ -16,6 +16,7 @@ title: Writeups
     <button class="filter-btn f-easy" data-filter="easy">Easy</button>
     <button class="filter-btn f-med"  data-filter="medium">Medium</button>
     <button class="filter-btn f-hard" data-filter="hard">Hard</button>
+    <button class="filter-btn f-insane" data-filter="insane">Insane</button>
     <div class="filter-separator"></div>
     <button class="filter-btn f-htb" data-filter="HackTheBox">HackTheBox</button>
     <button class="filter-btn f-thm" data-filter="TryHackMe">TryHackMe</button>
