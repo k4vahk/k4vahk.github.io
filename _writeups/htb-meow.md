@@ -41,7 +41,7 @@ nmap -p- -sS --open --min-rate 5000 -vvv -n -Pn 10.129.x.x -oG allports
 PORT   STATE SERVICE
 23/tcp open  telnet  
 ```
-Un solo puerto abierto. Puerto ``23``, servicio ``Telnet``.
+Un solo puerto abierto. Puerto ``23``, servicio [[Telnet]].
 
 Realizo un escaneo de versión  y servicios en ese puerto:
 

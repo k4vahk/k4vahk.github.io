@@ -59,5 +59,11 @@ title: Glosario
       <div class="glosario-def">Conexión desde el sistema víctima hacia el atacante, permitiendo control remoto eludiendo firewalls.</div>
     </div>
 
+    <div class="glosario-item">
+      <div class="glosario-cat">Servicio</div>
+      <div class="glosario-term">Telnet</div>
+      <div class="glosario-def">Telnet es un protocolo de red antiguo utilizado para acceder y gestionar ordenadores remotos mediante una interfaz de texto, operando generalmente en el puerto 23. Aunque permite la administración remota, no cifra la información, por lo que ha sido reemplazado por SSH por seguridad.</div>
+    </div>
+
   </div>
 </div>
