@@ -20,3 +20,7 @@ plugins:
   - jekyll-feed
 
 permalink: /blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-wikilinks
