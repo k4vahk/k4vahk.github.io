@@ -5,7 +5,7 @@ title: Inicio
 
 <div class="page">
   <div class="hero-tag">Disponible para oportunidades</div>
-  <h1>Hola, soy<br><em>k4vahk</em></h1>
+  <h1>Hola, soy<br><em>Angel Kavanagh</em></h1>
   <p class="hero-desc">Aprendiz de ciberseguridad apasionado por el hacking ético, CTFs y la seguridad ofensiva. Documentando mi camino mientras aprendo.</p>
 
   <div class="hero-links">
