@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HTB — Fawn (FTP Anonymous)
+title: HTB — Fawn
 date: 2026-04-26
 platform: HackTheBox
 difficulty: very-easy
@@ -10,6 +10,9 @@ tags:
   - Anonymous
   - Linux
 ---
+
+## Introducción
+
 **Fawn** es la segunda máquina de la sección de la sección **Starting Point**, aunque es extremadamente sencilla, enseña algo que se repite en entornos reales con consecuencias devastadoras: **servicios mal configurados con credenciales por defecto**.
 
 ----

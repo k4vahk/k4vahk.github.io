@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HTB — Meow (Telnet)
+title: HTB — Meow
 date: 2026-04-26
 platform: HackTheBox
 difficulty: very-easy
@@ -9,6 +9,9 @@ tags:
   - Telnet
   - Linux
 ---
+
+## Introducción
+
 **Meow** es la primera máquina de la sección **Starting Point**, aunque es extremadamente sencilla, enseña algo que se repite en entornos reales con consecuencias devastadoras: **servicios mal configurados con credenciales por defecto**
 
 ----
